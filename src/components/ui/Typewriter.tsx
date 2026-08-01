@@ -62,7 +62,7 @@ export function Typewriter({ onComplete }: { onComplete: () => void }) {
       const nextChar = currentLine[displayText.length];
       const extraDelay = (!isDeleting && (nextChar === '.' || nextChar === ',')) ? 300 : 0;
 
-      timeoutId = setTimeout(() => {
+      timeout = setTimeout(() => {
         setDisplayText(prev => {
           if (isDeleting) return prev.slice(0, -1);
           playSound();
@@ -71,7 +71,7 @@ export function Typewriter({ onComplete }: { onComplete: () => void }) {
       }, delay + extraDelay);
     }
 
-    return () => clearTimeout(timeoutId);
+    return () => clearTimeout(timeout);
   }, [displayText, isDeleting, currentLineIndex, isMuted, onComplete]);
 
   return (

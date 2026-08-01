@@ -8,7 +8,8 @@ type Theme = 'paper' | 'dark' | 'sepia';
 
 export function ChapterReader() {
   const [theme, setTheme] = useState<Theme>('paper');
-  const [fontSize, setFontSize] = useState('medium');
+  const [fontSize, setFontSize] = useState(18);
+  const [lineHeight, setLineHeight] = useState(1.8);
   const [showSettings, setShowSettings] = useState(false);
 
   const { scrollYProgress } = useScroll();
