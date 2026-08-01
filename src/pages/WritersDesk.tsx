@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { supabase } from '@/lib/supabase';
 import {
-  LayoutDashboard, ImageIcon, Settings, LogOut, UploadCloud, Loader2, Home as HomeIcon
+  ImageIcon, Settings, LogOut, UploadCloud, Loader2, Home as HomeIcon
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import type { Session } from '@supabase/supabase-js';

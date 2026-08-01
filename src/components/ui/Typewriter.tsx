@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { Volume2, VolumeX } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 
 const lines = [
   "i am vasu.",
@@ -13,7 +13,6 @@ const lines = [
 export function Typewriter({ onComplete }: { onComplete: () => void }) {
   const [displayText, setDisplayText] = useState('');
   const [currentLineIndex, setCurrentLineIndex] = useState(0);
-  const [isTyping, setIsTyping] = useState(true);
   const [isDeleting, setIsDeleting] = useState(false);
   const [isMuted, setIsMuted] = useState(true);
   
@@ -39,21 +38,20 @@ export function Typewriter({ onComplete }: { onComplete: () => void }) {
     }
 
     const currentLine = lines[currentLineIndex];
-    let timeoutId: NodeJS.Timeout;
+    let timeout: ReturnType<typeof setTimeout>;
 
     if (!isDeleting && displayText === currentLine) {
       // Reached end of line, wait then delete unless it's the last line
       if (currentLineIndex === lines.length - 1) {
-        setIsTyping(false);
         onComplete();
         return;
       }
-      timeoutId = setTimeout(() => setIsDeleting(true), 1500);
+      timeout = setTimeout(() => setIsDeleting(true), 1500);
     } else if (isDeleting && displayText === '') {
       // Finished deleting, move to next line
       setIsDeleting(false);
       setCurrentLineIndex(prev => prev + 1);
-      timeoutId = setTimeout(() => {}, 500);
+      timeout = setTimeout(() => {}, 500);
     } else {
       // Typing or deleting characters
       const delay = isDeleting 

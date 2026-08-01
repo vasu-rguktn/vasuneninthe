@@ -2,7 +2,7 @@ import { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { Typewriter } from "@/components/ui/Typewriter"
 import { Link } from "react-router-dom"
-import { BookOpen, PenTool, Image as ImageIcon, Archive } from "lucide-react"
+import { BookOpen, PenTool, Image as ImageIcon } from "lucide-react"
 
 export function Prologue() {
   const [typingComplete, setTypingComplete] = useState(false);

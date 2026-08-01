@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { ArrowLeft, Bookmark, Share2, Type, Settings2 } from 'lucide-react';
 import { motion, useScroll, useSpring } from 'framer-motion';
@@ -7,10 +7,8 @@ import { cn } from '@/lib/utils';
 type Theme = 'paper' | 'dark' | 'sepia';
 
 export function ChapterReader() {
-  const { slug } = useParams();
   const [theme, setTheme] = useState<Theme>('paper');
-  const [fontSize, setFontSize] = useState(18);
-  const [lineHeight, setLineHeight] = useState(1.8);
+  const [fontSize, setFontSize] = useState('medium');
   const [showSettings, setShowSettings] = useState(false);
 
   const { scrollYProgress } = useScroll();
