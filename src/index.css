@@ -1,0 +1,126 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+    /* ... keep core radix variables for shadcn but we won't rely on them much ... */
+    --card: 240 10% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 240 5.9% 10%;
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+    --accent: 240 3.7% 15.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 240 4.9% 83.9%;
+    --radius: 0.5rem;
+  }
+
+  body {
+    @apply bg-ink-900 text-ink-light font-body antialiased overflow-x-hidden selection:bg-ink-purple selection:text-white text-[20px] capitalize;
+  }
+
+  h1 {
+    @apply text-[32px] md:text-[40px] font-headings capitalize;
+  }
+
+  h2,
+  h3 {
+    @apply text-[24px] md:text-[40px] font-headings capitalize;
+  }
+
+  p,
+  span,
+  div,
+  a {
+    @apply text-[20px] capitalize;
+  }
+
+  small,
+  .caption {
+    @apply text-[12px] md:text-[14px];
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  /* Custom Scrollbar for Lenis */
+  html.lenis,
+  html.lenis body {
+    height: auto;
+  }
+
+  .lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+  }
+
+  .lenis.lenis-smooth [data-lenis-prevent] {
+    overscroll-behavior: contain;
+  }
+
+  .lenis.lenis-stopped {
+    overflow: hidden;
+  }
+
+  .lenis.lenis-scrolling iframe {
+    pointer-events: none;
+  }
+}
+
+@layer components {
+
+  /* Cinematic Paper & Ink Backgrounds */
+  .paper-texture {
+    background-color: #0f0c29;
+  }
+
+  .ink-gradient {
+    background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+  }
+
+  .vignette {
+    box-shadow: inset 0 0 200px rgba(0, 0, 0, 0.9);
+  }
+
+  .aged-paper-card {
+    @apply relative bg-[#1c1a2e] text-ink-light border border-[#302b63]/50 shadow-2xl;
+  }
+
+  /* Fountain pen custom cursor */
+  .custom-cursor {
+    @apply fixed top-0 left-0 w-6 h-6 rounded-full pointer-events-none z-[9999] mix-blend-difference flex items-center justify-center;
+    transition: transform 0.15s ease-out, width 0.2s ease, height 0.2s ease;
+  }
+
+  .custom-cursor::after {
+    content: '';
+    @apply absolute w-1.5 h-1.5 bg-white rounded-full transition-all duration-300;
+  }
+
+  .custom-cursor.hovering {
+    @apply w-12 h-12 bg-white/10;
+  }
+
+  .custom-cursor.hovering::after {
+    @apply w-2 h-2;
+  }
+
+  /* Ink spread mask */
+  .ink-spread-mask {
+    mask-image: url('https://raw.githubusercontent.com/vasuneninthe/assets/main/ink-mask.png');
+    mask-size: 3000% 100%;
+    mask-position: 0 0;
+  }
+}
