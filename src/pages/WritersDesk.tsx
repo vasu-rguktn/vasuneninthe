@@ -177,15 +177,15 @@ export function WritersDesk() {
     <div className="min-h-screen bg-ink-900 text-ink-light flex selection:bg-gold-accent selection:text-ink-900">
 
       {/* Sidebar */}
-      <aside className="w-64 border-r border-ink-700/50 flex flex-col bg-ink-900/50 backdrop-blur-md">
-        <div className="h-24 flex items-center justify-center border-b border-ink-700/50">
-          <span className="font-logo text-2xl tracking-tight text-white">
+      <aside className="w-80 flex flex-col bg-ink-900/50 backdrop-blur-md">
+        <div className="h-24 flex items-center justify-center">
+          <span className="font-logo text-[28px] tracking-tight text-white">
             vasu's verse
           </span>
         </div>
 
         <div className="px-6 py-8">
-          <div className="font-meta text-[10px] tracking-widest text-gold-accent/50 mb-6">
+          <div className="font-meta text-[28px] tracking-widest text-white mb-6">
             Writer's Desk
           </div>
 
@@ -195,10 +195,10 @@ export function WritersDesk() {
                 key={link.name}
                 onClick={() => setActiveTab(link.name)}
                 className={cn(
-                  "flex items-center gap-3 px-4 py-3 text-xs font-buttons tracking-wider transition-all text-left",
+                  "flex items-center gap-3 px-4 py-3 text-[28px] font-buttons tracking-wider transition-all text-left",
                   activeTab === link.name
-                    ? "bg-gold-accent/10 text-gold-accent border-l-2 border-gold-accent"
-                    : "text-ink-light/50 hover:text-white hover:bg-white/5 border-l-2 border-transparent"
+                    ? "bg-white/10 text-white border-l-2 border-white"
+                    : "text-white/70 hover:text-white hover:bg-white/5 border-l-2 border-transparent"
                 )}
               >
                 <link.icon size={16} />
@@ -208,17 +208,17 @@ export function WritersDesk() {
           </nav>
         </div>
 
-        <div className="mt-auto p-6 border-t border-ink-700/50">
+        <div className="mt-auto p-6">
           <button
             onClick={handleLogout}
-            className="flex items-center gap-3 px-4 py-3 text-xs font-buttons tracking-wider text-ink-light/50 hover:text-white transition-colors w-full text-left"
+            className="flex items-center gap-3 px-4 py-3 text-[20px] font-buttons tracking-wider text-white/70 hover:text-white transition-colors w-full text-left"
           >
             <LogOut size={16} />
             Lock Desk
           </button>
           <Link
             to="/"
-            className="flex items-center gap-3 px-4 py-3 mt-2 text-xs font-buttons tracking-wider text-ink-light/50 hover:text-white transition-colors w-full text-left"
+            className="flex items-center gap-3 px-4 py-3 mt-2 text-[20px] font-buttons tracking-wider text-white/70 hover:text-white transition-colors w-full text-left"
           >
             <HomeIcon size={16} />
             Back to Home
@@ -228,10 +228,10 @@ export function WritersDesk() {
 
       {/* Main Content Area */}
       <main className="flex-1 overflow-y-auto relative paper-texture">
-        <header className="h-24 border-b border-ink-700/50 flex items-center px-12 justify-between sticky top-0 z-10 bg-ink-900/80 backdrop-blur-md">
-          <h1 className="font-hero text-2xl text-white">{activeTab}</h1>
+        <header className="h-24 flex items-center px-12 justify-between sticky top-0 z-10 bg-ink-900/80 backdrop-blur-md">
+          <h1 className="font-hero text-[28px] text-white">{activeTab}</h1>
           <div className="flex items-center gap-4">
-            <span className="font-meta text-xs tracking-widest text-white/50">{session.user.email}</span>
+            <span className="font-meta text-[20px] tracking-widest text-white/50">{session.user.email}</span>
             <div className="w-8 h-8 rounded-full bg-gold-accent/20 flex items-center justify-center border border-gold-accent/50">
               <span className="font-logo text-gold-accent text-sm">V</span>
             </div>
@@ -244,10 +244,8 @@ export function WritersDesk() {
               <div className="aged-paper-card p-12 text-center border border-ink-700/50 relative overflow-hidden group">
                 <div className="relative z-10 flex flex-col items-center justify-center">
                   <UploadCloud className="text-gold-accent w-16 h-16 mb-6" />
-                  <h2 className="font-hero text-3xl text-white mb-2">Upload a Quote</h2>
-                  <p className="font-body text-white/60 mb-8 max-w-md">
-                    Upload an image.
-                  </p>
+                  <h2 className="font-hero text-[28px] text-white mb-2">Upload a Quote</h2>
+
 
                   <div className="relative">
                     <input
@@ -260,7 +258,7 @@ export function WritersDesk() {
                     />
                     <button
                       disabled={uploading}
-                      className="px-8 py-4 bg-ink-900 text-gold-accent border border-gold-accent/50 hover:bg-gold-accent hover:text-ink-900 font-buttons tracking-widest text-xs transition-colors flex items-center gap-3"
+                      className="px-8 py-4 bg-ink-900 text-gold-accent border border-gold-accent/50 hover:bg-gold-accent hover:text-ink-900 font-buttons tracking-widest text-[20px] transition-colors flex items-center gap-3"
                     >
                       {uploading ? <Loader2 className="animate-spin" size={16} /> : <ImageIcon size={16} />}
                       {uploading ? 'Uploading...' : 'Select Image File'}
@@ -279,10 +277,10 @@ export function WritersDesk() {
 
           {activeTab === 'Profile Settings' && (
             <div className="aged-paper-card p-12 border border-ink-700/50">
-              <h2 className="font-hero text-3xl text-white mb-8">Author Bio</h2>
+              <h2 className="font-hero text-[28px] text-white mb-8">Author Bio</h2>
               <div className="space-y-6">
                 <div>
-                  <label className="font-buttons tracking-[0.2em] text-xs text-gold-accent mb-4 block">Bio Text</label>
+                  <label className="font-buttons tracking-[0.2em] text-[20px] text-gold-accent mb-4 block">Bio Text</label>
                   <textarea
                     value={bio}
                     onChange={(e) => setBio(e.target.value)}
@@ -292,7 +290,7 @@ export function WritersDesk() {
                 <button
                   onClick={saveBio}
                   disabled={savingBio}
-                  className="px-8 py-4 bg-ink-800 text-gold-accent border border-gold-accent/50 hover:bg-gold-accent hover:text-ink-900 font-buttons tracking-widest text-xs transition-colors"
+                  className="px-8 py-4 bg-ink-800 text-gold-accent border border-gold-accent/50 hover:bg-gold-accent hover:text-ink-900 font-buttons tracking-widest text-[20px] transition-colors"
                 >
                   {savingBio ? 'Saving...' : 'Update Bio'}
                 </button>
